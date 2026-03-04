@@ -1,0 +1,21 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding-inline: 24px;
+}
+
+.btn--primary {
+  color: white;
+  background-color: green;
+}
+
+.btn--secondary {
+  color: black;
+  background-color: yellow;
+}
+
+.btn--outline {
+  color: black;
+  border: 1px solid black;
+}
