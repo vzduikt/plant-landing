@@ -1,9 +1,14 @@
 .btn {
   display: inline-flex;
   align-items: center;
-  height: 32px;
-  padding-inline: 24px;
+  text-decoration: none;
+  padding-inline: 4px;
+  border-width: 0;
+  padding-block: 0;
+  cursor: pointer;
 }
+
+/* Button colors */
 
 .btn--primary {
   color: white;
@@ -15,7 +20,36 @@
   background-color: yellow;
 }
 
-.btn--outline {
-  color: black;
-  border: 1px solid black;
+/* Button sizes */
+
+.btn--sm {
+  padding-inline: 12px;
+  font-size: 12px;
+  min-height: 32px;
+}
+
+.btn--md {
+  padding-inline: 16px;
+  font-size: 14px;
+  min-height: 40px;
+}
+
+.btn--lg {
+  padding-inline: 16px;
+  font-size: 24px;
+  min-height: 48px;
+}
+
+/* Button border radius */
+
+.btn--rounded-full {
+  border-radius: 20px;
+}
+
+.btn--rounded-sm {
+  border-radius: 4px;
+}
+
+.btn--rounded-md {
+  border-radius: 10px;
 }
