@@ -1,55 +1,55 @@
 .btn {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   text-decoration: none;
-  padding-inline: 4px;
+  min-width: 152px;
+  padding-inline: 8px;
   border-width: 0;
   padding-block: 0;
   cursor: pointer;
 }
 
-/* Button colors */
-
-.btn--primary {
-  color: white;
-  background-color: green;
-}
-
-.btn--secondary {
-  color: black;
-  background-color: yellow;
-}
-
 /* Button sizes */
 
 .btn--sm {
-  padding-inline: 12px;
-  font-size: 12px;
-  min-height: 32px;
+  min-height: 50px;
 }
 
 .btn--md {
-  padding-inline: 16px;
-  font-size: 14px;
-  min-height: 40px;
+  min-height: 56px;
 }
 
-.btn--lg {
-  padding-inline: 16px;
-  font-size: 24px;
-  min-height: 48px;
+/* Button variants */
+
+.btn--outline {
+  border: 2px solid transparent;
 }
 
-/* Button border radius */
+/* Card */
 
-.btn--rounded-full {
-  border-radius: 20px;
+.card {
+  background: rgba(219, 255, 236, 0.16);
+  box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12.5px);
 }
 
-.btn--rounded-sm {
-  border-radius: 4px;
+/* Card size */
+
+.card--md {
+  padding: 40px 24px;
 }
 
-.btn--rounded-md {
-  border-radius: 10px;
+.card--lg {
+  padding: 40px 48px;
 }
+
+/* Card border radius*/
+
+.card--rounded-md {
+  border-radius: 40px;
+}
+
+.card--rounded-lg {
+  border-radius: 150px;
+};
