@@ -1,55 +1,174 @@
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  min-width: 152px;
-  padding-inline: 8px;
-  border-width: 0;
-  padding-block: 0;
-  cursor: pointer;
+/* 1. LAYER DEFINITION */
+@layer reset, base, components, layout, utilities;
+
+/* 2. BASE LAYER */
+@layer base {
+  :root {
+    /* --- Font Families --- */
+    --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* --- Font Weights --- */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --font-weight-black: 900;
+
+    /* --- Font Sizes --- */
+    --font-size-xs: 14px;
+    --font-size-sm: 16px;
+    --font-size-base: 17px;
+    --font-size-md: 18px;
+    --font-size-lg: 20px;
+    --font-size-xl: 22px;
+    --font-size-2xl: 24px;
+    --font-size-3xl: 28px;
+    --font-size-4xl: 32px;
+    --font-size-5xl: 38px;
+    --font-size-6xl: 40px;
+    --font-size-7xl: 54px;
+    --font-size-8xl: 55px;
+    --font-size-9x: 104px;
+
+    /* --- Colors --- */
+    --color-primary-100: #004B23;
+    --color-primary-20:  #DBFFEC;
+    --color-primary-70:  #49C583;
+    --color-secondary-60: #FFD60A;
+    --color-white: #FFFFFF;
+    --color-bg-body: #1B2316;
+
+    /* --- Border Radiuses --- */
+    --radius-sm: 20px;
+    --radius-md: 40px;
+    --radius-lg: 150px;
+    --radius-50: 50%;
+    --radius-full: 100%;
+
+    /* --- Effects & Shadows --- */
+    /* Using color-mix to create that rgba(219, 255, 236, 0.16) dynamically */
+    --card-bg-glass: color-mix(in srgb, var(--color-primary-20), transparent 84%);
+    --shadow-inset-soft: inset 4px 4px 6px rgba(0, 0, 0, 0.25);
+    --blur-glass: blur(12.5px);
+  }
+
+  [data-theme="dark"] {
+    /* We flip the background to a deeper black-green */
+    --color-bg-body: #0A0F08; 
+    
+    /* Primary 100 was deep green, we make it even darker or more saturated */
+    --color-primary-100: #002411; 
+    
+    /* Primary 20 was very light green; in dark mode, we shift this to a 
+       mid-tone green so the "glass" effect looks like glowing neon */
+    --color-primary-20: #143324; 
+    
+    /* Keep the brand accent green visible but punchier */
+    --color-primary-70: #5EFB9F; 
+    
+    /* Keep the secondary yellow but perhaps slightly more amber for eye-care */
+    --color-secondary-60: #FFCC00;
+
+    /* Text stays white, but we can dim it slightly for sub-text if needed */
+    --color-white: #E0E0E0;
+
+    /* Invert the shadow to look like a "glow" or a deeper pit */
+    --shadow-inset-soft: inset 2px 2px 8px rgba(0, 0, 0, 0.5);
+    
+    /* The glass effect now pulls from the darker primary-20 */
+    --card-bg-glass: color-mix(in srgb, var(--color-primary-20), transparent 60%);
+  }
+
+  body {
+    background-color: var(--color-bg-body);
+    color: var(--color-white);
+    font-family: var(--font-family-primary);
+    margin: 0;
+  }
 }
 
-/* Button sizes */
+/* 3. COMPONENTS LAYER */
+@layer components {
+  /* --- Buttons --- */
+  .btn {
+    --radius-btn: var(--radius-sm);
 
-.btn--sm {
-  min-height: 50px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    transition: filter 0.2s;
+  }
+
+  .btn--sm { min-width: 70px; min-height: 50px; font-size: var(--font-size-sm); }
+  .btn--md { min-width: 90px; min-height: 50px; font-size: var(--font-size-md); }
+  .btn--rounded-md { border-radius: var(--radius-btn); }
+  
+  .btn--warning {
+    background-color: var(--color-secondary-60);
+    color: var(--color-primary-100);
+  }
+
+  .btn--outline {
+    border: 2px solid var(--color-primary-70);
+    background: transparent;
+    color: var(--color-primary-70);
+  }
+
+  /* --- Cards --- */
+  .card {
+    background: var(--card-bg-glass);
+    box-shadow: var(--shadow-inset-soft);
+    backdrop-filter: var(--blur-glass);
+    /* We use the base color for fallback or layering */
+    background-color: var(--color-primary-20); 
+    color: var(--color-white);
+  }
+
+  .card--md { padding: 40px 24px; }
+  .card--lg { padding: 40px 48px; }
+  
+  /* Updated radius classes with variables */
+  .card--rounded-md { border-radius: var(--radius-md); }
+  .card--rounded-lg { border-radius: var(--radius-lg); }
+
+  .card__par { 
+    font-size: var(--font-size-base); 
+    font-weight: var(--font-weight-regular);
+  }
+
+  /* --- Avatar --- */
+  .avatar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .avatar__image {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-circle);
+    object-fit: cover;
+  }
+
+  .avatar__title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+  }
+
+  .avatar__rating svg:hover path {
+    fill: var(--color-secondary-60);
+  }
 }
 
-.btn--md {
-  min-height: 56px;
+/* 4. LAYOUT LAYER */
+@layer layout {
+  .hero {
+    min-height: 100vh;
+    background: url('../images/sections/hero/hero-bg.jpg') no-repeat center/cover;
+    display: grid;
+    place-items: center;
+  }
 }
-
-/* Button variants */
-
-.btn--outline {
-  border: 2px solid transparent;
-}
-
-/* Card */
-
-.card {
-  background: rgba(219, 255, 236, 0.16);
-  box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(12.5px);
-}
-
-/* Card size */
-
-.card--md {
-  padding: 40px 24px;
-}
-
-.card--lg {
-  padding: 40px 48px;
-}
-
-/* Card border radius*/
-
-.card--rounded-md {
-  border-radius: 40px;
-}
-
-.card--rounded-lg {
-  border-radius: 150px;
-};
