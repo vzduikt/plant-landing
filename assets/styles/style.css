@@ -122,6 +122,10 @@
     width: 100%;
     height: auto;
   }
+
+  button {
+    cursor: pointer;
+  }
 }
 
 /* 3. LAYOYUT LAYER */
@@ -164,12 +168,35 @@
 
   /* --- Cards --- */
   .card {
+    --card-item-gap-sm: 16px;
+
     background: var(--card-bg-glass);
     box-shadow: var(--shadow-inset-soft);
     backdrop-filter: var(--blur-glass);
     /* We use the base color for fallback or layering */
-    background-color: var(--color-primary-20); 
     color: var(--color-white);
+
+    .card__title {
+      font-size: var(--font-size-5xl);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .card__info {
+      font-size: var(--font-size-2xl);
+    }
+
+    .card__price {
+      font-size: var(--font-size-5xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary-20);
+    }
+
+    .card__action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
   }
   
   .card--md { padding: 40px 24px; }
@@ -178,6 +205,15 @@
   /* Updated radius classes with variables */
   .card--rounded-md { border-radius: var(--radius-md); }
   .card--rounded-lg { border-radius: var(--radius-lg); }
+
+  .card--flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+    
+  .card--item-gap-sm {
+    gap: var(--card-item-gap-sm);
+  }
 
   .card__par { 
     font-size: var(--font-size-base); 
@@ -310,5 +346,11 @@
   .top-selling {
     padding-block: 40px;
     gap: 40px;
+
+    .top-selling__items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
   }
 }
