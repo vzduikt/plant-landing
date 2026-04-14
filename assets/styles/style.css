@@ -168,7 +168,8 @@
 
   /* --- Cards --- */
   .card {
-    --card-item-gap-sm: 16px;
+    --card-gap-sm: 16px;
+    --card-gap-lg: 32px;
 
     background: var(--card-bg-glass);
     box-shadow: var(--shadow-inset-soft);
@@ -211,27 +212,38 @@
     flex-direction: column;
   }
     
-  .card--item-gap-sm {
-    gap: var(--card-item-gap-sm);
+  .card--gap-sm {
+    gap: var(--card-gap-sm);
   }
 
-  .card__par { 
+  .card--gap-lg {
+    gap: var(--card-gap-lg);
+  }
+
+  .card__text { 
     font-size: var(--font-size-base); 
     font-weight: var(--font-weight-regular);
+    margin-block: 0;
   }
 
   /* --- Avatar --- */
   .avatar {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
   }
 
   .avatar__image {
     width: 72px;
     height: 72px;
-    border-radius: var(--radius-circle);
+    border-radius: var(--radius-50);
     object-fit: cover;
+  }
+
+  .avatar__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .avatar__title {
@@ -327,6 +339,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 40px;
   }
 
   .main-header {
@@ -345,11 +358,20 @@
 
   .top-selling {
     padding-block: 40px;
-    gap: 40px;
 
     .top-selling__items {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+
+  .reviews {
+    padding-block: 20px;
+
+    .reviews__items {
+      display: flex;
+      align-items: center;
       gap: 24px;
     }
   }
