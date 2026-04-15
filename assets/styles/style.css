@@ -134,6 +134,10 @@
     max-width: 1440px;
     margin-inline: auto;
     padding-inline: 80px;
+
+    @media screen and (max-width: 1200px) {
+      padding-inline: 24px;
+    }
   }
 } 
 
@@ -165,6 +169,41 @@
     background: transparent;
     color: var(--color-primary-70);
   }
+
+  .btn-burger {
+    width: 40px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+  }
+  
+  .btn-burger span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-primary-20);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out; 
+
+  .btn-burger.open span:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+  }
+  
+  .btn-burger.open span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  
+  .btn-burger.open span:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+  }
+  
+}
 
   /* --- Cards --- */
   .card {
@@ -331,7 +370,7 @@
       -webkit-mask-composite: destination-out;
       mask-composite: exclude;
     }
- }
+}
 
 /* 4. LAYOUT LAYER */
 @layer sections {
@@ -347,6 +386,35 @@
     align-items: center;
     justify-content: space-between;
     padding-block: 24px;
+
+    .btn-burger {
+      display: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      .btn-burger {
+        display: flex;
+      }
+
+      .main-nav {
+        position: fixed;
+        background-color: var(--color-bg-body);
+        top: 96px;
+        width: 100%;
+        height: calc(100vh - 96px);
+        z-index: 999;
+        translate: -200% 0;
+        transition: translate .1s;
+
+        &.active {
+          translate: 0;
+        }
+
+        ul {
+          flex-direction: column;
+        }
+      }
+    }
   }
 
   .hero {
@@ -363,6 +431,14 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+
+      @media screen and (max-width: 1200px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media screen and (max-width: 576px) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 
@@ -373,6 +449,10 @@
       display: flex;
       align-items: center;
       gap: 24px;
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+      }
     }
   }
 }
