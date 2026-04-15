@@ -122,6 +122,10 @@
     width: 100%;
     height: auto;
   }
+
+  button {
+    cursor: pointer;
+  }
 }
 
 /* 3. LAYOYUT LAYER */
@@ -164,12 +168,36 @@
 
   /* --- Cards --- */
   .card {
+    --card-gap-sm: 16px;
+    --card-gap-lg: 32px;
+
     background: var(--card-bg-glass);
     box-shadow: var(--shadow-inset-soft);
     backdrop-filter: var(--blur-glass);
     /* We use the base color for fallback or layering */
-    background-color: var(--color-primary-20); 
     color: var(--color-white);
+
+    .card__title {
+      font-size: var(--font-size-5xl);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .card__info {
+      font-size: var(--font-size-2xl);
+    }
+
+    .card__price {
+      font-size: var(--font-size-5xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary-20);
+    }
+
+    .card__action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
   }
   
   .card--md { padding: 40px 24px; }
@@ -179,23 +207,43 @@
   .card--rounded-md { border-radius: var(--radius-md); }
   .card--rounded-lg { border-radius: var(--radius-lg); }
 
-  .card__par { 
+  .card--flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+    
+  .card--gap-sm {
+    gap: var(--card-gap-sm);
+  }
+
+  .card--gap-lg {
+    gap: var(--card-gap-lg);
+  }
+
+  .card__text { 
     font-size: var(--font-size-base); 
     font-weight: var(--font-weight-regular);
+    margin-block: 0;
   }
 
   /* --- Avatar --- */
   .avatar {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
   }
 
   .avatar__image {
     width: 72px;
     height: 72px;
-    border-radius: var(--radius-circle);
+    border-radius: var(--radius-50);
     object-fit: cover;
+  }
+
+  .avatar__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .avatar__title {
@@ -291,6 +339,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 40px;
   }
 
   .main-header {
@@ -309,6 +358,21 @@
 
   .top-selling {
     padding-block: 40px;
-    gap: 40px;
+
+    .top-selling__items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+
+  .reviews {
+    padding-block: 20px;
+
+    .reviews__items {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
   }
 }
